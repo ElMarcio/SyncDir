@@ -7,6 +7,14 @@ from hashlib import md5
 from datetime import datetime
 from threading import Thread, Event
 
+"""
+KEY NOTES:
+- Requests user path for source, replica, log files (if no log, creates new one at given path) and sync timer. 
+- MD5 verification for file creation, update, deletion.
+- Retry attempts in case of error, else continue
+- Relevant data recorded in log and displayed in terminal
+- User input to close program 'q'
+"""
 
 
 def calculate_md5(file_path):
