@@ -8,6 +8,7 @@ from datetime import datetime
 from threading import Thread, Event
 
 
+
 def calculate_md5(file_path):
     """Calculate the MD5 checksum of a file."""
     try:
@@ -160,7 +161,7 @@ def main():
     print("To close the program, simply exit or type 'q'")
     source = get_input("Insert source folder path: ", "dir")
     replica = get_input("Insert replica folder path: ", "dir")
-    log_file = get_input("Insert log file path: ", "file")
+    log_file = get_input("Insert log file path (if non-existent, creates a new one): ", "file")
     setup_logger(log_file)
     interval = int(input("Set up synchronization time (seconds >0): "))
     logger = logging.getLogger('')
