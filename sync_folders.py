@@ -9,11 +9,17 @@ from threading import Thread, Event
 
 """
 KEY NOTES:
-- Requests user path for source, replica, log files (if no log, creates new one at given path) and sync timer. 
-- MD5 verification for file creation, update, deletion.
-- Retry attempts in case of error, else continue
-- Relevant data recorded in log and displayed in terminal
-- User input to close program 'q'
+1. Calculate the MD5 checksum of files to detect changes.
+2. Set up logging to both a file and the console for detailed operation logs.
+3. Validate user-provided file and directory paths.
+4. Get user input for source directory, replica directory, and log file path.
+5. Copy files with retries to handle open file errors.
+6. Synchronize the source directory with the replica directory:
+   - Add or update files based on MD5 checksum comparison.
+   - Create missing directories in the replica.
+   - Remove files and directories from the replica that no longer exist in the source.
+7. Continuous synchronization loop with a specified interval.
+8. Use threading to run the synchronization concurrently and allow smooth stopping.
 """
 
 
